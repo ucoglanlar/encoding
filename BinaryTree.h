@@ -27,10 +27,72 @@ public:
     
     BinaryTree(){
         
+        charecter = '0';
+        frequency = 0;
+        left = NULL;
+        right = NULL;
+        
+    }
+    
+    BinaryTree(char c, int f, BinaryTree* l, BinaryTree* r){
+        
+        charecter = c;
+        frequency = f;
+        left = l;
+        right = r;
+        
+    }
+    
+    BinaryTree(const BinaryTree& b){
+        
+        charecter = b.getCharecter();
+        frequency = b.getFrequency();
+        left = b.getLeft();
+        right = b.getRight();
+        
     }
 
-    void printTree(){
+    char getCharecter() const{
+        return charecter;
+    }
     
+    int getFrequency() const{
+        return frequency;
+    }
+    
+    BinaryTree* getLeft() const{
+        return left;
+    }
+    
+    BinaryTree* getRight() const{
+        return right;
+    }
+    
+    bool operator<(const BinaryTree& b) const{
+        
+        if(frequency < b.getFrequency()){
+            return true;
+        }
+        
+        return false;
+    
+    }
+    
+    BinaryTree& operator=(const BinaryTree& b){
+        
+        charecter = b.getCharecter();
+        frequency = b.getFrequency();
+        left = b.getLeft();
+        right = b.getRight();
+        
+        return *this;
+    
+    }
+    
+    void printTree(){
+        
+        
+        
     }
     
 
