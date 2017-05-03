@@ -9,6 +9,8 @@
 #ifndef BINARYTREE_H
 #define BINARYTREE_H
 
+using namespace std;
+
 class BinaryTree{
 
 private:
@@ -27,7 +29,7 @@ public:
     
     BinaryTree(){
         
-        charecter = '0';
+        charecter = '`';
         frequency = 0;
         left = NULL;
         right = NULL;
@@ -40,7 +42,6 @@ public:
         frequency = f;
         left = l;
         right = r;
-        
     }
     
     BinaryTree(const BinaryTree& b){
@@ -68,6 +69,22 @@ public:
         return right;
     }
     
+    void setCharecter(char c) {
+        charecter = c;
+    }
+    
+    void setFrequency(int f) {
+        frequency = f;
+    }
+    
+    void setLeft(BinaryTree* b) {
+        left = b;
+    }
+    
+    void setRight(BinaryTree* b) {
+        right = b;
+    }
+    
     bool operator<(const BinaryTree& b) const{
         
         if(frequency < b.getFrequency()){
@@ -89,9 +106,20 @@ public:
     
     }
     
-    void printTree(){
+    void printTree(BinaryTree* node){
         
+        if(node == NULL){
+            return;
+        }
+          
+        printTree(node->left);
         
+        //Only print leaf nodes
+        if(node->getCharecter() != '`'){
+            cout << node->getCharecter() << " : " << node->getFrequency() << endl;
+        }
+        
+        printTree(node->right);
         
     }
     
