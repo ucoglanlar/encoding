@@ -35,7 +35,8 @@ int main(int argc, char** argv) {
     char curr;
     
     //Read each character in the file
-    while( file >> curr){
+    while( file >> noskipws >> curr){
+        cout << curr;
         //Increase count of current character
         freq[(int)curr]++;
     }
@@ -57,7 +58,6 @@ int main(int argc, char** argv) {
     }
     
     cout  << "Building Tree" << endl;
-    cout  << "Heap Contents" << endl;
     
     //Build Heap
     while(!heap.isEmpty()){
@@ -70,7 +70,8 @@ int main(int argc, char** argv) {
         
         //Finished
         if(heap.isEmpty()){
-            cout << "DONE!" << endl << endl;
+            
+            cout << "DONE!" << endl;
             
             //Set the root of the binary heap equal to min1, the last item in the heap
             topRoot = new BinaryTree(min1.getCharecter(), min1.getFrequency(), min1.getLeft(), min1.getRight());
